@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ssb-plus-config>
+    <!--<scanner-profile>NCR_78xx_HID_0215_4-07879_ImageScanner</scanner-profile>-->
+    <scanner-profile>NCR_78xx_HID_ImageScanner</scanner-profile>
+    <company-number>123</company-number>
+    <company-name>Acme Corporation</company-name>
+    <store-number>1234</store-number>
+    <lane-number>55</lane-number>
+    <enable-cameras>1,2,3,4</enable-cameras>
+    <!--<enable-cameras>3</enable-cameras>-->
+    <message-subscription-list>CA,CB,C6,C7,C9,D4</message-subscription-list>    
+</ssb-plus-config>

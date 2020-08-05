@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="c78a5771-49dc-450c-8d80-7823c40a880e" name="SSBPP Class Diagram" linkedPackageId="031ab0df-c916-4e2e-969b-f1f4d8f9caca" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="95874148-341b-44c3-a1dd-e9bdde3e3e68">
+      <profileInstance Id="9d50a29f-83dd-455b-a22b-2ad8853d6c32" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="261a6ee2-7144-4419-a50e-fb8029a3457e">
+      <profileInstance Id="a3d4dc2f-1824-4575-a244-182a8a1e0044" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="4f53a6ab-7419-45b4-9cc9-a9e1f13c3361" name="PipeServer" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f05e1918-13a9-46ed-a7fb-a18f6ac5ac56" />
+        <ownedOperationsInternal>
+          <operation Id="430b5d0b-afae-4475-9b92-af877a429185" name="Open" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="cb3c9a4e-b382-4eed-a5b1-486c7ea1ecf6" />
+          </operation>
+          <operation Id="e29fb2ed-86e4-433b-a689-8987ec8896aa" name="Close" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="8ccff9fb-5e5b-4912-a254-c4cc1ec0e033" />
+          </operation>
+          <operation Id="fee20f79-b6b9-44e4-ae21-498d36f120e9" name="Connect" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="0eec2f94-df82-446e-b2b3-2cca15c04369" />
+          </operation>
+          <operation Id="9f01c2e9-4b1f-4d21-8b10-e46d39378a95" name="Disconnect" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="a7832deb-6b84-46fc-8e76-c6613df0a2be" />
+          </operation>
+          <operation Id="3b738be6-0d7b-45bd-8e71-26506b9b7843" name="SetCallback" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="fcdb9e8e-9b74-46ed-a072-549162bfde53" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="09d5d111-88d9-4937-93b1-7afef5b223d6" name="ICallback" direction="In" isUnique="false">
+                  <elementDefinition Id="4cfbb963-9a26-4ea5-a507-a15c0375b12d" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="bb168f2b-ae85-4ffe-bcb4-7c28c518828c" LastKnownName="ICalback" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="24974201-d75c-4768-830f-fe09973ae668" name="Send" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="de4085ce-6998-455e-8e93-dd6aca3ee97e" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="5cadf5a3-1fbc-49ce-a021-c0b9f3288604" name="vector&lt;uint8_t&gt;" direction="In" isUnique="false">
+                  <elementDefinition Id="dd92b463-6b51-4ab1-b817-7a6d65de4dbd" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="65761eaa-d8a0-4860-b530-73f341b04658" name="ICalback" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8438b523-f4e9-4a83-90c5-6965ab455802" />
+        <ownedOperations>
+          <operation Id="8940871b-fac3-4bea-88e6-5dd8221ce287" name="OnEvent" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="565ba621-b75e-4ab2-9ff3-e599e144a819" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="ad771ecc-6814-40f1-bcab-05681f241dfe" name="vector&lt;uint8_t&gt;" direction="In" isUnique="false">
+                  <elementDefinition Id="e5646f03-52bf-4a68-910b-0b4490acd32d" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="b805a005-bbb1-42cd-9a25-d710191da530" name="MessageHandler : public ICallback" isAbstract="false" isLeaf="true" isActiveClass="false">
+        <elementDefinition Id="2df8888c-ab88-436f-b4aa-8113ce275678" />
+        <ownedOperationsInternal>
+          <operation Id="14b1359a-afda-4b84-8bf5-9d2cc8a32282" name="OnConfig" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="80a7546d-63ec-4c5a-99ea-d778ce15d1a7" />
+          </operation>
+          <operation Id="53490ecb-7d93-4fa6-bbb4-9f597b559f36" name="SendConfigResponse" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="c4d98995-226c-4a5f-83eb-e28423cae302" />
+          </operation>
+          <operation Id="80d52656-1d56-4f3a-8da8-ca1604292f8e" name="OnItemDetail" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="b303785e-7f10-4a90-98ee-3813c4529655" />
+          </operation>
+          <operation Id="b507d6d1-7c2d-4f51-b37e-3ffe67367d89" name="OnGetMatchingItems" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="43ace358-3749-40f2-a72c-04b7e543e57e" />
+          </operation>
+          <operation Id="377c445a-be23-4a67-ae72-9142f26a9469" name="OnStateData" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="49908822-a942-44b8-bcdb-b275ce9f18eb" />
+          </operation>
+          <operation Id="37ccb20d-b67f-4964-92ac-5acae1f00e78" name="OnDbManagement" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="03d69fa2-ebdc-4fed-ace9-828f9f18ff81" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="ed653a06-e734-4181-bd7d-047867ad2c0e" name="UpstreamHandler" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b23fe889-56bb-42dc-b4cf-4e1a9cebf45c" />
+        <ownedOperationsInternal>
+          <operation Id="94c518a1-b7d8-4a37-aeeb-cee53ac68545" name="GetMatchingItems" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="0c420b3e-0f3c-4bd1-bfb3-92215165127e" />
+          </operation>
+          <operation Id="a7a0642d-aca3-49bd-9859-a2d673b5310f" name="Open" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="5dda49ff-6303-4df8-9aae-d96fc33261fc" />
+          </operation>
+          <operation Id="8cba049f-a001-45c3-9f42-bcd2fe582c93" name="Close" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f55a5d1b-f23f-4fce-9e63-71a97ea659ba" />
+          </operation>
+          <operation Id="89d9b66d-9a95-433c-a2a8-201ffaced950" name="ValidateItem" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="b6298b53-1a8d-4eb9-9907-6793cdf47bc8" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="a82a5bae-18a8-4f0e-8d99-78608c5e6da5" name="images" direction="In" isUnique="false">
+                  <elementDefinition Id="237f6a4c-bf27-4cd1-b9f5-9908626b2989" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="cebbf56e-4da8-442c-8026-f098cfb30493" name="result" direction="In" isUnique="false">
+                  <elementDefinition Id="a63d15a3-4aac-47df-a259-f768227cd512" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="bb168f2b-ae85-4ffe-bcb4-7c28c518828c" name="ICalback" isAbstract="false" isLeaf="false" cachedFullName="SSBPP_Modeling::ICalback">
+        <elementDefinition Id="8438b523-f4e9-4a83-90c5-6965ab455802" />
+      </referencedType>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="031ab0df-c916-4e2e-969b-f1f4d8f9caca" name="SSBPP_Modeling">
+    <elementDefinition Id="95929a3d-9664-456e-82fa-a04382f2173e" />
+  </package>
+</logicalClassDesignerModel>

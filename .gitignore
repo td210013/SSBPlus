@@ -1,0 +1,10 @@
+# Git Ignore SSBPlus
+.vs
+ipch
+debug
+release
+*.vc.db
+*.VC.VC.opendb
+.vs
+Release140
+Debug140

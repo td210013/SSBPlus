@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7A897F06-74D0-431E-B31D-8449D6152EB5}</ProjectGuid>
+    <RootNamespace>SsbImageCollect</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <Keyword>MFCProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;SSPS_RPSW;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>%APP_DRIVE%\%APP_DIR%\ADK\include;..\OPOS\include;$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\include\image_converter;$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\include\device_manager\inc;$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\include\camera_sdk\firmware_update;$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\include\camera_sdk\inc;$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\include\imaging_library\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalLibraryDirectories>%APP_DRIVE%\%APP_DIR%\ADK\LIB\Debug140;$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\$(Configuration)\lib\$(PlatformShortName)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>RPSWUD.LIB;version.lib;Rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>xcopy /f /r /y SsbImageCollectConfigZebra.xml .\$(Configuration)</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>rem copy /Y "$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\$(Configuration)\bin\$(PlatformShortName)\*.dll" "$(TargetDir)"
+copy /Y "$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\$(Configuration)\bin\$(PlatformShortName)\device_manager.dll" "$(TargetDir)"
+copy /Y "$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\$(Configuration)\bin\$(PlatformShortName)\devmgr_adapter.dll" "$(TargetDir)"
+copy /Y "$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\$(Configuration)\bin\$(PlatformShortName)\image_converter.dll" "$(TargetDir)"
+copy /Y "$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\$(Configuration)\bin\$(PlatformShortName)\uvc_adapter.dll" "$(TargetDir)"
+copy /Y "$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\$(Configuration)\bin\$(PlatformShortName)\zebracam.dll" "$(TargetDir)"
+</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;SSPS_RPSW;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>%APP_DRIVE%\%APP_DIR%\ADK\include;..\OPOS\include;$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\include\image_converter;$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\include\device_manager\inc;$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\include\camera_sdk\firmware_update;$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\include\camera_sdk\inc;$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\include\imaging_library\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>%APP_DRIVE%\%APP_DIR%\ADK\lib\Release140;$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\$(Configuration)\lib\$(PlatformShortName)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>RPSWU.LIB;;version.lib;Rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>xcopy /f /r /y SsbImageCollectConfigZebra.xml .\$(Configuration)</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>rem copy /Y "$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\$(Configuration)\bin\$(PlatformShortName)\*.dll" "$(TargetDir)"
+copy /Y "$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\$(Configuration)\bin\$(PlatformShortName)\device_manager.dll" "$(TargetDir)"
+copy /Y "$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\$(Configuration)\bin\$(PlatformShortName)\devmgr_adapter.dll" "$(TargetDir)"
+copy /Y "$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\$(Configuration)\bin\$(PlatformShortName)\image_converter.dll" "$(TargetDir)"
+copy /Y "$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\$(Configuration)\bin\$(PlatformShortName)\uvc_adapter.dll" "$(TargetDir)"
+copy /Y "$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\$(Configuration)\bin\$(PlatformShortName)\zebracam.dll" "$(TargetDir)"
+</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Base64EncodeDecode.h" />
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="FileOperations.h" />
+    <ClInclude Include="FOInterface.h" />
+    <ClInclude Include="GTOControlObject.h" />
+    <ClInclude Include="Logging.h" />
+    <ClInclude Include="NcrZebraCamera.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="Ssb++ImageCollect.h" />
+    <ClInclude Include="Ssb++ImageCollectDlg.h" />
+    <ClInclude Include="SSBCommErrors.h" />
+    <ClInclude Include="SSBCommException.h" />
+    <ClInclude Include="SSBConstants.h" />
+    <ClInclude Include="SSBErrors.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="XmlSerializer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Base64EncodeDecode.cpp" />
+    <ClCompile Include="Config.cpp" />
+    <ClCompile Include="FileOperations.cpp" />
+    <ClCompile Include="FOInterface.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="GTOControlObject.cpp" />
+    <ClCompile Include="Logging.cpp" />
+    <ClCompile Include="NcrZebraCamera.cpp" />
+    <ClCompile Include="Ssb++ImageCollect.cpp" />
+    <ClCompile Include="Ssb++ImageCollectDlg.cpp" />
+    <ClCompile Include="SSBCommException.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="XmlSerializer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Ssb++ImageCollect.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\SsbImageCollect.rc2" />
+    <None Include="SsbImageCollectDlgDcapZebra.reg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\Ssb++ImageCollect.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="SsbImageCollectConfigZebra.xml">
+      <SubType>Designer</SubType>
+    </Xml>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="Ssb++ImageCollect.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

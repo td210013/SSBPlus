@@ -1,0 +1,52 @@
+//////////////////////////////////////////////////////////////////////
+//
+// OposTone.hi
+//
+//   Tone Indicator header file for OPOS Controls and Service Objects.
+//
+// Modification history
+// -------------------------------------------------------------------
+// 97-06-04 OPOS Release 1.2                                     CRM
+// 05-04-29 OPOS Release 1.9                                     CRM
+//   Remove validation functions.
+//
+//////////////////////////////////////////////////////////////////////
+
+#if !defined(OPOSTONE_HI)
+#define      OPOSTONE_HI
+
+
+#include "Opos.hi"
+#include "OposTone.h"
+
+
+//////////////////////////////////////////////////////////////////////
+// Numeric Property Index Values.
+//////////////////////////////////////////////////////////////////////
+
+// * Properties *
+
+const LONG PIDXTone_AsyncMode           =   1 + PIDX_TONE+PIDX_NUMBER;
+const LONG PIDXTone_Tone1Pitch          =   2 + PIDX_TONE+PIDX_NUMBER;
+const LONG PIDXTone_Tone1Volume         =   3 + PIDX_TONE+PIDX_NUMBER;
+const LONG PIDXTone_Tone1Duration       =   4 + PIDX_TONE+PIDX_NUMBER;
+const LONG PIDXTone_Tone2Pitch          =   5 + PIDX_TONE+PIDX_NUMBER;
+const LONG PIDXTone_Tone2Volume         =   6 + PIDX_TONE+PIDX_NUMBER;
+const LONG PIDXTone_Tone2Duration       =   7 + PIDX_TONE+PIDX_NUMBER;
+const LONG PIDXTone_InterToneWait       =   8 + PIDX_TONE+PIDX_NUMBER;
+
+
+// * Capabilities *
+
+const LONG PIDXTone_CapPitch            = 501 + PIDX_TONE+PIDX_NUMBER;
+const LONG PIDXTone_CapVolume           = 502 + PIDX_TONE+PIDX_NUMBER;
+
+
+//////////////////////////////////////////////////////////////////////
+// String Property Index Values.
+//////////////////////////////////////////////////////////////////////
+
+// * Properties *
+
+
+#endif          // !defined(OPOSTONE_HI)

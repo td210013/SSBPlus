@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ssb-image-collection-config>
+    <scanner-profile>ZebraMP700</scanner-profile>
+    <company-number>123</company-number>
+    <company-name>Acme Corporation</company-name>
+    <store-number>1234</store-number>
+    <lane-number>55</lane-number>
+    <enable-cameras>1,2,3,4</enable-cameras>
+    <!--Zebra -->
+    <!-- FrameTypes -->
+        <!--[0] format: YUY2, width:  960, height: 600, framerate: 45-->
+        <!--[1] format: YUY2, width: 1280, height: 800, framerate: 45-->
+        <!--[2] format: YUY2, width:  480, height: 300, framerate: 45--> 
+        <!--[3]	format: YUY2, width:  320, height: 200, framerate: 45-->
+    <frame-type>3</frame-type>
+    <!--Illumination mode--> 
+    <!--STANDARD   = 0 - illuminates scale when weight is placed on the scale  -->
+	<!--ALWAYS_ON  = 1 - illuminates scale when shapshots are taken (preferred) -->
+	<!--ALWAYS_OFF = 2 - no illumination -->
+    <illumination-mode>1</illumination-mode>
+</ssb-image-collection-config>

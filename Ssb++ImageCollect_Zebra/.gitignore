@@ -1,0 +1,15 @@
+# Git Ignore OposScannerTest
+.vs
+ipch
+debug
+release
+*.VC.db
+*.vc.db
+*.VC.VC.opendb
+*/.vs
+# Common/lib
+# Common/include/archived
+# Common/include/bu
+delete*
+ZebraMP7000Images
+ZebraMP7000Images.zip.txt

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pipeserver-monitor-config>
+    <message-subscription-list>CA,CB,C6,C7,C9,D4</message-subscription-list>
+</pipeserver-monitor-config>
