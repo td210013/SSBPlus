@@ -1,0 +1,35 @@
+<message name="config" _name="PLA" msgid="cb">
+    <fields>
+        <message name="hdr">
+            <fields>
+                <field name="transID"></field>
+                <field name="computerName">192.168.163.133</field>
+                <field name="sequenceID">19</field>
+                <field name="lane">1</field>
+            </fields>
+        </message>
+        <field name="timeout">3000</field>
+        <field name="centerDetection">Off</field>
+        <field name="numberofItems">24</field>
+        <field name="enable">On</field>
+        <field name="scalemetric">Off</field>
+        <field name="validation">On</field>
+    </fields>
+</message>
+<message name="config" _name="PA" msgid="ca">
+    <fields>
+        <message name="hdr">
+            <fields>
+                <field name="transID"></field>
+                <field name="computerName">192.168.163.133</field>
+                <field name="sequenceID">19</field>
+                <field name="lane">1</field>
+            </fields>
+        </message>
+        <field name="timeout">3000</field>
+        <field name="centerDetection">Off</field>
+        <field name="enable">On</field>
+        <field name="mode">0</field>
+        <field name="scalemetric">Off</field>
+    </fields>
+</message>

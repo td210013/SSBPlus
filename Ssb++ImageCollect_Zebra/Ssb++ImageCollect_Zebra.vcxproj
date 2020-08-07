@@ -111,7 +111,7 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>xcopy /f /r /y SsbImageCollectConfigZebra.xml .\$(Configuration)</Command>
+      <Command>xcopy /f /r /y SsbImageCollectConfigZebra.xml ..\$(Configuration)</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>rem copy /Y "$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\$(Configuration)\bin\$(PlatformShortName)\*.dll" "$(TargetDir)"
@@ -175,7 +175,7 @@ copy /Y "$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\$(Configuration)\bin\$
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <PostBuildEvent>
-      <Command>xcopy /f /r /y SsbImageCollectConfigZebra.xml .\$(Configuration)</Command>
+      <Command>xcopy /f /r /y SsbImageCollectConfigZebra.xml ..\$(Configuration)</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>rem copy /Y "$(SolutionDir)..\3rdParty\Zebra\BiopticCameraSDK\$(Configuration)\bin\$(PlatformShortName)\*.dll" "$(TargetDir)"

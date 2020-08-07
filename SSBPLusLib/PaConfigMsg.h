@@ -16,7 +16,7 @@
 //      <scalemetric>Off</scalemetric>
 //  </config>
 
-class CPaConfig
+class CPaConfigMsg
 {
 public:
 
@@ -38,8 +38,8 @@ public:
 
 public:
 
-    CPaConfig();
-    ~CPaConfig();
+    CPaConfigMsg();
+    ~CPaConfigMsg();
 
 public:
 
@@ -50,6 +50,7 @@ public:
     ePAMODE eMode;
     long ltimeout;
     eStatus m_eStatus;
+    bool bMaskTransId;
 
 public:
 
@@ -63,9 +64,7 @@ protected:
 
     BOOL SetObjectValue(IGTGenObjPtr a_ptrGenObj, LPWSTR a_szName, _bstr_t a_szValue);
 
-    const std::string currentDateTime();
-
-    // IGTGenObjPtr m_ptrGenObj = NULL;
+    const std::string GetCurrentDateTime();
 
 private:
 };

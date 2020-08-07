@@ -50,6 +50,9 @@ public:
     static bool SendStatusAlert(PSSBERRORINFO pError);
 private:
 	static HRESULT SetupConnection();
+    static void ClearPosConnection();
+    static HRESULT ResetPosConnection();
+
 	static  IGTGenObjPtr m_gpGenObj;
 	inline void CGTOControlObject::SendStatus(int nStatusCode);
 

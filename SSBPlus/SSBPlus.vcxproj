@@ -92,7 +92,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;SSPS_RPSW;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%APP_DRIVE%\%APP_DIR%\ADK\include;..\OPOS\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SSBPlusLib;%APP_DRIVE%\%APP_DIR%\ADK\include;..\OPOS\include</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
@@ -147,14 +147,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;SSPS_RPSW;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%APP_DRIVE%\%APP_DIR%\ADK\include;..\OPOS\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SSBPlusLib;%APP_DRIVE%\%APP_DIR%\ADK\include;..\OPOS\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>%APP_DRIVE%\%APP_DIR%\ADK\lib\Release140</AdditionalLibraryDirectories>
-      <AdditionalDependencies>RPSWU.LIB;;version.lib;Rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>RPSWU.LIB;version.lib;Rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Midl>
@@ -201,24 +201,13 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Config.h" />
-    <ClInclude Include="Logging.h" />
-    <ClInclude Include="MessageHandler.h" />
-    <ClInclude Include="PaConfig.h" />
-    <ClInclude Include="PipeServer.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SSBPP.h" />
     <ClInclude Include="SSBPPDlg.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="XmlSerializer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Config.cpp" />
-    <ClCompile Include="Logging.cpp" />
-    <ClCompile Include="MessageHandler.cpp" />
-    <ClCompile Include="PaConfig.cpp" />
-    <ClCompile Include="PipeServer.cpp" />
     <ClCompile Include="SSBPP.cpp" />
     <ClCompile Include="SSBPPDlg.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -227,7 +216,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="XmlSerializer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SSBPP.rc" />
@@ -240,6 +228,11 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="SsbPlus.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SSBPLusLib\SSBPLusLib.vcxproj">
+      <Project>{3db98879-1573-4afc-826a-194840e26745}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -15,7 +15,8 @@ public:
 
     virtual void OnRecieveMessage(CPipeServer *pPipeServer, IGTGenObjPtr pGenObjPtr);
 
-    void OnConfigMsg(IGTGenObjPtr pGenObjPtr);
+    void OnPaConfigMsg(CPipeServer * pPipeServer, IGTGenObjPtr pGenObjPtr);
+    void OnPlaConfigMsg(CPipeServer * pPipeServer, IGTGenObjPtr pGenObjPtr);
     void OnItemDetail(IGTGenObjPtr pGenObjPtr);
     void OnGetMatchingItems(IGTGenObjPtr pGenObjPtr);
     void OnStateData(IGTGenObjPtr pGenObjPtr);

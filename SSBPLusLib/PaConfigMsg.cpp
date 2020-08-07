@@ -1,24 +1,24 @@
 #include "stdafx.h"
-#include "PaConfig.h"
+#include "PaConfigMsg.h"
 #include "Logging.h"
 
-
-CPaConfig::CPaConfig() : 
+CPaConfigMsg::CPaConfigMsg() : 
+    hdr(L""),
     bEnable(false),
     bCenterDetection(false),
     bScaleMetric(false),
     eMode(ePA_MODE_0_CONSERVATIVE),
     ltimeout(0),
+    bMaskTransId(false),  // for unit testing support only
     m_eStatus(eGeneralFailure)
 {
 }
 
-
-CPaConfig::~CPaConfig()
+CPaConfigMsg::~CPaConfigMsg()
 {
 }
 
-void CPaConfig::Set(IGTGenObjPtr a_ptrGenObj)
+void CPaConfigMsg::Set(IGTGenObjPtr a_ptrGenObj)
 {
     try
     {
@@ -136,14 +136,16 @@ void CPaConfig::Set(IGTGenObjPtr a_ptrGenObj)
     catch (_com_error& e)
     {
         Trace(TRACE_ERROR, _T("Com Error Handling Pipe Server Message %s"), e.ErrorMessage());
+        m_eStatus = eGeneralFailure;
     }
     catch (...)
     {
         Trace(TRACE_ERROR, _T("Unknown Exception Handling Pipe Server Message"));
+        m_eStatus = eGeneralFailure;
     }
 }
 
-IGTGenObjPtr CPaConfig::Get()
+IGTGenObjPtr CPaConfigMsg::Get()
 {
     HRESULT hr = S_OK;
     IGTGenObjPtr ptrGenObj;
@@ -180,7 +182,14 @@ IGTGenObjPtr CPaConfig::Get()
         ptrGenObj->SetAttribute(_T("/"), _T("_name"), _T("PA"));
         ptrGenObj->SetXml(_T("/hdr"), hdr);
 
-        ptrGenObj->SetValue(_T("hdr/transID"), currentDateTime().c_str());
+        if (bMaskTransId)
+        {
+            ptrGenObj->SetValue(_T("hdr/transID"), L"*" );
+        }
+        else
+        {
+            ptrGenObj->SetValue(_T("hdr/transID"), GetCurrentDateTime().c_str());
+        }
 
         if (eStatusOk != eStatusInvalidParameter)
         {
@@ -194,7 +203,7 @@ IGTGenObjPtr CPaConfig::Get()
     return ptrGenObj;
 }
 
-_bstr_t CPaConfig::GetObjectValue(IGTGenObjPtr a_ptrGenObj, LPWSTR a_szName)
+_bstr_t CPaConfigMsg::GetObjectValue(IGTGenObjPtr a_ptrGenObj, LPWSTR a_szName)
 {
     _variant_t var;
     _bstr_t str = _T("");
@@ -215,13 +224,13 @@ _bstr_t CPaConfig::GetObjectValue(IGTGenObjPtr a_ptrGenObj, LPWSTR a_szName)
     return str;
 }
 
-BOOL CPaConfig::SetObjectValue(IGTGenObjPtr a_ptrGenObj, LPWSTR a_szName, _bstr_t a_szValue)
+BOOL CPaConfigMsg::SetObjectValue(IGTGenObjPtr a_ptrGenObj, LPWSTR a_szName, _bstr_t a_szValue)
 {
     a_ptrGenObj->SetValue(a_szName, a_szValue);
     return 0;
 }
 
-const std::string CPaConfig::currentDateTime()
+const std::string CPaConfigMsg::GetCurrentDateTime()
 {
     SYSTEMTIME st;
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ssb-image-collection-config>
-    <scanner-profile>ZebraMP700</scanner-profile>
+    <scanner-profile>ZebraMP7000</scanner-profile>
     <company-number>123</company-number>
     <company-name>Acme Corporation</company-name>
     <store-number>1234</store-number>
     <lane-number>55</lane-number>
-    <enable-cameras>1,2,3,4</enable-cameras>
+    <!--<enable-cameras>1,2,3,4</enable-cameras>-->
     <!--Zebra -->
     <!-- FrameTypes -->
         <!--[0] format: YUY2, width:  960, height: 600, framerate: 45-->

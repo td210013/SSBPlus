@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pipeserver-tester-config>
+    <message-subscription-list>C6,C7,C8,C9,CA,CB,CF,D4</message-subscription-list>
+</pipeserver-tester-config>

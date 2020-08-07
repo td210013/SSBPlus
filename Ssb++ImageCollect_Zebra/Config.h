@@ -46,7 +46,7 @@ typedef enum {
 } eIlluminationMode;
 
 
-const TCHAR szXML_CONFIG_FILENAME[]       = _T("SsbImageCollectConfig.xml");
+const TCHAR szXML_CONFIG_FILENAME[]       = _T("SsbImageCollectConfigZebra.xml");
 const TCHAR szXML_CONFIG_ROOT_NODE[]      = _T("ssb-image-collection-config");
 const TCHAR szXML_TAG_SCANNER_PROFILE[]   = _T("scanner-profile");  
 const TCHAR szXML_TAG_COMPANY_NUMBER[]    = _T("company-number");
@@ -56,8 +56,7 @@ const TCHAR szXML_TAG_ENABLE_CAMERAS[]    = _T("enable-cameras");
 const TCHAR szXML_TAG_FRAME_TYPE[]        = _T("frame-type");
 const TCHAR szXML_TAG_ILLUMINATION_MODE[] = _T("illumination-mode");
 
-
-const TCHAR szDEFAULT_SCANNER_PROFILE[]   = _T("NCR_78xx_HID_0215_4-07879_ImageScanner");
+const TCHAR szDEFAULT_SCANNER_PROFILE[]   = _T("Zebra_MP7000");
 
 //******************************************************************************
 //
@@ -73,7 +72,7 @@ class CConfig : public IXmlSerialize
    //***************************************************************************
    public:
 
-       CString csScannerProfile; // registry hive for scanner profile
+       CString csScannerProfile; 
        CString csCompanyNumber;
        CString csStoreNumber;
        CString csLaneNumber;
@@ -82,7 +81,7 @@ class CConfig : public IXmlSerialize
        eFrameType FrameType;
        eIlluminationMode IlluminationMode;
 
-       std::vector<int> m_vCameras;
+       // std::vector<int> m_vCameras;
 
    //***************************************************************************
    // @access Life cycle
@@ -119,6 +118,12 @@ class CConfig : public IXmlSerialize
       void Clear(void);
 
       bool IsEqual(const CConfig& a_oRhs);
+
+   //***************************************************************************
+   // @access interface
+   //***************************************************************************
+   public:
+       void Log();
 
 }; // Config::
 

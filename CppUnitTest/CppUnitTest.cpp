@@ -6,6 +6,7 @@
 
 #include "cppunit/ui/text/TestRunner.h"
 #include "Cppunit/extensions/TestFactoryRegistry.h"
+#include <string>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -36,12 +37,26 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 	}
 	else
 	{
+        CString csTestPath;
+
+        csTestPath = (argc > 1) ? argv[1] : _T("");
+
+        CT2CA pszConvertedAnsiString(csTestPath);
+        std::string testPath(pszConvertedAnsiString);
+
+        std::cout << "Running " << testPath;
+
+
         TextUi::TestRunner runner;
 
         runner.addTest(CppUnit::TestFactoryRegistry::getRegistry().makeTest());
     
-        nSuccessful = runner.run();
-	}
+        #if defined(_DEBUG)
+        nSuccessful = runner.run(testPath, true);
+        #else   
+        nSuccessful = runner.run(testPath);
+        #endif
+    }
 
 	return nSuccessful;
 }

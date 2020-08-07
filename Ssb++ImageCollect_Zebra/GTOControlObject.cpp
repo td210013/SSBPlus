@@ -314,6 +314,23 @@ HRESULT CGTOControlObject::SetupConnection()
 	return hr;
 }
 
+void CGTOControlObject::ClearPosConnection()
+{
+    if (CGTOControlObject::m_gPosConnection != NULL)
+    {
+        CGTOControlObject::m_gPosConnection->Disconnect();
+        CGTOControlObject::m_gPosConnection.Release();
+        CGTOControlObject::m_gPosConnection = NULL;
+        g_GTOCtrlObj.setPosConnection(NULL);
+    }
+}
+
+HRESULT CGTOControlObject::ResetPosConnection()
+{
+    ClearPosConnection();
+    return SetupConnection();
+}
+
 /// <summary>
 /// Initializes a new instance of the <see cref="CGTOControlObject"/> class.
 /// </summary>
@@ -349,6 +366,7 @@ void CGTOControlObject::sendStream( IGTGenObjPtr pGenObjPtr)
 	catch(_com_error& er)
 	{
         Trace(TRACE_ERROR, _T("Unable to send the stream over pipe server,%s, Please restart IMA"), er.ErrorMessage());
+        ResetPosConnection();
 	}
 	catch(...)
 	{
@@ -513,60 +531,57 @@ HRESULT CGTOControlObject::SendAlertMessage(PSSBVALRESPONSE pRes)
 HRESULT CGTOControlObject::SendImage(NcrImageData imaData)
 {
     HRESULT hr = S_OK;
-    IGTGenObjPtr PLAMessage;
-    IGTGenObjPtr PLAList;
+    IGTGenObjPtr PostImageMessage;
+
     try
     {
         //setup xml for GTO object
-        hr = PLAMessage.CreateInstance(__uuidof(CGTGenObj));
+        hr = PostImageMessage.CreateInstance(__uuidof(CGTGenObj));
         if (FAILED(hr))
             throw _com_error(hr);
 
-        hr = PLAList.CreateInstance(__uuidof(CGTGenObj));
-        if (FAILED(hr))
-            throw _com_error(hr);
-
-        PLAMessage->Name = _T("postImage");
-        PLAMessage->IsXMLOutput = true;
-        PLAMessage->Validate = false;
-        PLAMessage->MsgId = 0xD4;
-        PLAMessage->IsNamedElementsXML = true;
-        PLAList->IsXMLOutput = true;
-        PLAList->Validate = false;
+        PostImageMessage->Name = _T("postImage");
+        PostImageMessage->IsXMLOutput = true;
+        PostImageMessage->Validate = false;
+        PostImageMessage->MsgId = 0xD4;
+        PostImageMessage->IsNamedElementsXML = true;
 
         //_bstr_t hdr = m_pGenObj->GetXml(_T("/hdr"));
-        //PLAMessage->SetXml(_T("/hdr"), hdr);
-        //PLAMessage->SetValue(_T("hdr/transID"), currentDateTime().c_str());
-        // PLAMessage->SetValue(_T("name"), _T("Picklist"));
-        // PLAMessage->SetValue(_T("imagePath"), _bstr_t( imaData.cImgePath.c_str() ));
-        // PLAMessage->SetValue(_T("bitsPerPixel"), imaData.nBitsPerPixel );
-        // PLAMessage->SetValue(_T("frameType"), imaData.nFrameType);
-        PLAMessage->SetValue(_T("height"), imaData.height);
-        PLAMessage->SetValue(_T("width"), imaData.width);
-        PLAMessage->SetValue(_T("length"), imaData.B64data.size());
-        // PLAMessage->SetValue(_T("nImageType"), imaData. .nImageType);
-        PLAMessage->SetValue(_T("format"), imaData.format.c_str()  );
+        //PostImageMessage->SetXml(_T("/hdr"), hdr);
+        //PostImageMessage->SetValue(_T("hdr/transID"), currentDateTime().c_str());
+        // PostImageMessage->SetValue(_T("name"), _T("Picklist"));
+        // PostImageMessage->SetValue(_T("imagePath"), _bstr_t( imaData.cImgePath.c_str() ));
+        // PostImageMessage->SetValue(_T("bitsPerPixel"), imaData.nBitsPerPixel );
+        // PostImageMessage->SetValue(_T("frameType"), imaData.nFrameType);
+        PostImageMessage->SetValue(_T("height"), imaData.height);
+        PostImageMessage->SetValue(_T("width"), imaData.width);
+        PostImageMessage->SetValue(_T("length"), imaData.B64data.size());
+        // PostImageMessage->SetValue(_T("nImageType"), imaData. .nImageType);
+        PostImageMessage->SetValue(_T("format"), imaData.format.c_str()  );
 
         std::map<CString, CString>::iterator iter;
         for (iter = mapMetaData.begin(); iter != mapMetaData.end(); iter++)
         {
-            PLAMessage->SetValue(iter->first.GetString(), iter->second.GetString() );
+            PostImageMessage->SetValue(iter->first.GetString(), iter->second.GetString() );
         }
 
         int nCameraNum = 1;
 
-        PLAMessage->SetValue(_T("camerId"), nCameraNum );
-        PLAMessage->SetValue(_T("companyNumber"), GetConfig()->csCompanyNumber.GetString());
-        PLAMessage->SetValue(_T("storeNumber"), GetConfig()->csStoreNumber.GetString());
-        PLAMessage->SetValue(_T("laneNumber"), GetConfig()->csLaneNumber.GetString());
-        // PLAMessage->SetValue(_T("imageType"), _bstr_t(imaData.cImgePath.c_str()));
-        PLAMessage->SetValue(_T("base64Image"), _bstr_t(imaData.B64data.c_str()));
+        PostImageMessage->SetValue(_T("camerId"), nCameraNum );
+        PostImageMessage->SetValue(_T("companyNumber"), GetConfig()->csCompanyNumber.GetString());
+        PostImageMessage->SetValue(_T("storeNumber"), GetConfig()->csStoreNumber.GetString());
+        PostImageMessage->SetValue(_T("laneNumber"), GetConfig()->csLaneNumber.GetString());
+        // PostImageMessage->SetValue(_T("imageType"), _bstr_t(imaData.cImgePath.c_str()));
+        PostImageMessage->SetValue(_T("base64Image"), _bstr_t(imaData.B64data.c_str()));
 
-        _bstr_t xmlStr = PLAMessage->Getxml();
+        _bstr_t xmlStr = PostImageMessage->Getxml();
 
         Trace(TRACE_INFO, (LPCTSTR)xmlStr);
 
-        IGTStreamPtr stream = PLAMessage;
+        g_GTOCtrlObj.sendStream(PostImageMessage);
+
+        /*
+        IGTStreamPtr stream = PostImageMessage;
         try
         {
             CString csMsg;
@@ -584,6 +599,7 @@ HRESULT CGTOControlObject::SendImage(NcrImageData imaData)
             Trace(TRACE_ERROR, _T("Unable to send the stream over pipe server, Unhandled Exception. Please restart IMA"));
             PostStatusMsgToParent(_T("Failed to send image data to pipeserver"));
         }
+        */
 
         // Trace(TRACE_INFO, _T("Deleting file: %s"), CString(imaData.cImgePath.c_str()) );
         //CFileOperations fOpts;
@@ -592,8 +608,7 @@ HRESULT CGTOControlObject::SendImage(NcrImageData imaData)
         //    Trace(TRACE_ERROR, _T("Failed to delete file: %s"), CString(imaData.cImgePath.c_str()));
         //}
 
-        PLAList.Release();
-        PLAMessage.Release();
+        PostImageMessage.Release();
     }
     catch (_com_error& er)
     {

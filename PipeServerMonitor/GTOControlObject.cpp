@@ -603,6 +603,26 @@ void CGTOControlObject::sendStream( IGTGenObjPtr pGenObjPtr)
 //    return hr;
 //}
 
+/*
+HRESULT WINAPI CGTOControlObject::Callback(VARIANT vUser, GTConnectReceiveEvent tbcre, IDispatch *pObj)
+{
+    try
+    {
+        IGTGenObjPtr m_gpGenObj = pObj;
+        _bstr_t xmlStr = m_gpGenObj->Getxml();
+
+        Trace(TRACE_INFO, (LPCTSTR)xmlStr);
+    }
+    catch (_com_error& e)
+    {
+        Trace(TRACE_ERROR, _T("Com Error Handling Pipe Server Message %s"), e.ErrorMessage());
+    }
+    catch (...)
+    {
+        Trace(TRACE_ERROR, _T("Unknow Exception Handling Pipe Server Message"));
+    }
+}
+*/
 
 HRESULT WINAPI CGTOControlObject::Callback(VARIANT vUser, GTConnectReceiveEvent tbcre, IDispatch *pObj)
 {
@@ -614,6 +634,9 @@ HRESULT WINAPI CGTOControlObject::Callback(VARIANT vUser, GTConnectReceiveEvent 
 		_bstr_t xmlStr = m_gpGenObj->Getxml();
 
         Trace(TRACE_INFO, (LPCTSTR)xmlStr);
+
+        m_gpGenObj->IsNamedElementsXML = false;
+        _bstr_t xmlStr2 = m_gpGenObj->Getxml();
 
         std::string ssCurrentFilename = currentFilename();
         WriteToFile(ssCurrentFilename.c_str(), xmlStr);

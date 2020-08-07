@@ -378,30 +378,35 @@ void CSsbImageCollectDlg::OnOutputCompleteEvent(long lEvent)
 
 }
 
-
 void CSsbImageCollectDlg::OnBnClickedButtonCollectImage()
 {
     try
     {
-        NcrImageData image_data;
+        NcrImageData image_data = { "", 0,0, 0, 0, "", {} };
 
         bool bSuccess = oZebraCamera.TakeSnapShot(image_data);
 
-        oZebraCamera.SaveImage(&image_data.data, CString("C:\\Temp\\Test.jpg"));
+        if (bSuccess)
+        {
+            oZebraCamera.SaveImage(&image_data.data, CString("C:\\Temp\\Test.jpg"));
 
-        // B64 conversions 
-        CBase64EncodeDecode oB64;
+            // B64 conversion 
+            CBase64EncodeDecode oB64;
 
-        oB64.Base64Encode((const void*)&image_data.data[0], image_data.data.size(), image_data.B64data );
+            oB64.Base64Encode((const void*)&image_data.data[0], image_data.data.size(), image_data.B64data);
 
-        CGTOControlObject::SendImage(image_data);
+            CGTOControlObject::SendImage(image_data);
+        }
+        else
+        {
+            MessageBox(_T("Failed to Take snapshot. See log for failure reason"), _T("ERROR!"), MB_ICONERROR | MB_OK);
+        }
     }
     catch (const std::exception& e)
     {
         CString message(_T("OnBnClickedButtonCapture() : Exception occurred : "));
         CString error(e.what());
         TRACE(message + error);
-        //std::cout << message + error << std::endl;
         AfxGetMainWnd()->MessageBox((LPCTSTR)(message + error), _T("Error"));
     }
 

@@ -73,6 +73,8 @@ BOOL InitializeConfig()
                 // failed to opent xml file: szXML_CONFIG_FILENAME
                 Trace(TRACE_ERROR, _T("Failed to open xml file:: %s"), szXML_CONFIG_FILENAME);
             }
+
+            S_pConfig->Log();
         }
         else
         {
@@ -236,18 +238,20 @@ eXsRetValue CConfig::Deserialize(CXmlSerializer xs)
     xs.Deserialize(szXML_TAG_ILLUMINATION_MODE, nTempInt);
     IlluminationMode = (eIlluminationMode)nTempInt;
 
-    std::istringstream f(ssEnableCameras);
+    //std::istringstream f(ssEnableCameras);
 
-    std::string s;
-    while (std::getline(f, s, ',')) {
-        m_vCameras.push_back(atoi(s.c_str()));
-    }
+    //std::string s;
+    //while (std::getline(f, s, ',')) {
+    //    m_vCameras.push_back(atoi(s.c_str()));
+    //}
 
     return eXsSuccess;
 }
 
 bool CConfig::IsEqual(const CConfig& a_oRhs)
 {
+    // No implementation needed
+    ASSERT(0);
     bool bEqual = true;
 
     //bEqual &= (nPrinterCharacterWidth == a_oRhs.nPrinterCharacterWidth );
@@ -259,6 +263,25 @@ bool CConfig::IsEqual(const CConfig& a_oRhs)
     return bEqual;
 }
 
+//**********************************************************************
+//
+// @func    Log configuration
+//
+// @rdesc   None
+//
+// @comm    
+//
+//**********************************************************************
+void CConfig::Log()
+{
+    Trace(TRACE_INFO, _T("Configuration Values:"));
+    Trace(TRACE_INFO, _T("  Profile:          %s"), csScannerProfile.GetString());
+    Trace(TRACE_INFO, _T("  CompanyNumber:    %s"), csCompanyNumber);
+    Trace(TRACE_INFO, _T("  StoreNumber:      %s"), csStoreNumber);
+    Trace(TRACE_INFO, _T("  LaneNUmber:       %s"), csLaneNumber);
+    Trace(TRACE_INFO, _T("  FrameType:        %d"), FrameType);
+    Trace(TRACE_INFO, _T("  IlluminationMode: %d"), IlluminationMode);
+}
 
 //**********************************************************************
 //
