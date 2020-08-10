@@ -119,19 +119,27 @@ void CMessageHandler::OnPaConfigMsg(CPipeServer * pPipeServer, IGTGenObjPtr pGen
         {
             CPaConfigMsg oPaConfigMsg;
 
+            // parse message into PA config object
+            //
             oPaConfigMsg.Set(pGenObjPtr);
 
+            // Set application configuraton
+            //
             // SSB.SetPaConfig( oPaConfigMsg );
 
+            // Get and send configuration response
+            //
             pPipeServer->Send(oPaConfigMsg.Get());
         }
     }
     catch (_com_error& e)
     {
+        ASSERT(0);
         Trace(TRACE_ERROR, _T("Com Error Handling PA Config Message %s"), e.ErrorMessage());
     }
     catch (...)
     {
+        ASSERT(0);
         Trace(TRACE_ERROR, _T("Unknown Exception Handling PA Config Messge "));
     }
 }
